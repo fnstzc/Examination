@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fnst.examination.dao.QuestionDao">
+
+    <!-- select语句 -->
+    <select id="selectAnswerById" parameterType="int" resultType="String">
+        select answer from Question where 1=1 and Question.id = #{id}
+    </select>
+    <select id="selectAllQuestion" resultType="Question">
+        select * from Question
+    </select>
+    <select id="selectQuestionById" parameterType="int" resultType="Question">
+        select * from Question where 1=1 and Question.id = #{id}
+    </select>
+    <insert id="addQuestion" parameterType="String" 
+        useGeneratedKeys="true" keyProperty="id"> 
+        insert into question(context,image,type,level,point,answer)
+             values(#{context},#{image},#{type},#{level},#{point},#{answer})
+    </insert>
+    
+    <update id="updateQuestion" parameterType="String" >
+        update question set context=#{context},image=#{image},type=#{type},level=#{level},point=#{point},answer=#{answer} where id=#{id}
+    </update>
+    
+    <delete id="deleteQuestion" parameterType="int">
+        delete from question where question.id=#{id}
+    </delete>
+    
+</mapper>

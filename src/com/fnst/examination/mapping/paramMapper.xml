@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fnst.examination.dao.ParamDao">
+		<resultMap type="com.fnst.examination.entity.Param" id="Param">
+		  <result property="choiceNum" column="choice_num" />
+		  <result property="vacantNum" column="vacant_num" />
+		  <result property="questNum" column="quest_num" />
+		  <result property="choiceScore" column="choice_score" />
+		  <result property="vacantScore" column="vacant_score" />
+		  <result property="questScore" column="quest_score" />
+		  <result property="repeatRate" column="repeat_rate" />
+		  <result property="javaRate" column="java_rate" />
+		  <result property="javascriptRate" column="javascript_rate" />
+		  <result property="htmlRate" column="html_rate" />
+		  <result property="cssRate" column="css_rate" />
+		  <result property="pythonRate" column="python_rate" />
+		  <result property="rubyRate" column="ruby_rate" />
+		 </resultMap>
+    <select id="selectParamById" parameterType="int" resultMap="Param">
+        select * from Param where id = #{id}
+    </select>
+    
+    <select id="selectParamLast" resultMap="Param">
+        select * from Param order by id desc limit 1
+    </select>
+    
+    <insert id="insertParam" parameterType="String" useGeneratedKeys="true" keyProperty="id"> 
+        insert into Param(level,choice_num,vacant_num,quest_num,choice_score,vacant_score,quest_score,repeat_rate,java_rate,javascript_rate,html_rate,css_rate,python_rate,ruby_rate) values(#{level},#{choiceNum},#{vacantNum},#{questNum},#{choiceScore},#{vacantScore},#{questScore},#{repeatRate},#{javaRate},#{javascriptRate},#{htmlRate},#{cssRate},#{pythonRate},#{rubyRate})
+    </insert>
+    
+    <delete id="deleteParamById" parameterType="int">
+        delete from Param where id=#{id}
+    </delete>
+    
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fnst.examination.dao.ExamDao">
+    <select id="selectExam" resultType="Exam">
+        select * from Exam
+    </select>
+    <insert id="addExam" parameterType="int"
+    		useGeneratedKeys="true" keyProperty="exam_id">
+    	insert into exam(question1_id,question2_id,question3_id,question4_id,question5_id,
+    	question6_id,question7_id,question8_id,question9_id,question10_id) values (#{question1_Id},
+    	#{question2_Id},#{question3_Id},#{question4_Id},#{question5_Id},#{question6_Id},#{question7_Id},#{question8_Id},
+    	#{question9_Id},#{question10_Id})
+    </insert>
+    <delete id="deleteExam">
+        delete from exam where exam_id != 0;
+    </delete>
+    
+</mapper>

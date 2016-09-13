@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="User" type="com.fnst.examination.entity.User" />
+		<typeAlias alias="Exam" type="com.fnst.examination.entity.Exam" />
+		<typeAlias alias="Param" type="com.fnst.examination.entity.Param" />
+		<typeAlias alias="Question" type="com.fnst.examination.entity.Question" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+              <!-- 配置数据库连接信息 -->
+              <dataSource type="POOLED">
+                 <property name="driver" value="com.mysql.jdbc.Driver" />
+                 <property name="url" value="jdbc:mysql://localhost:3306/examination" />
+                 <property name="username" value="root" />
+                 <property name="password" value="" />
+             </dataSource>
+		</environment>
+	</environments>
+	<mappers>
+         <mapper resource="com/fnst/examination/mapping/questionMapper.xml"/>
+         <mapper resource="com/fnst/examination/mapping/paramMapper.xml"/>
+         <mapper resource="com/fnst/examination/mapping/userMapper.xml"/>
+		 <mapper resource="com/fnst/examination/mapping/examMapper.xml"/>   
+    </mappers>
+</configuration>
